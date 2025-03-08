@@ -1,7 +1,10 @@
-export const Blog = () => {
+const Blog = () => {
 
     return (
         <>
+            <p>Blog</p>
         </>
     );
 }
+
+export default Blog;
