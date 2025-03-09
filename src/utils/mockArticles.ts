@@ -1,4 +1,4 @@
-const mockArticles = [
+export const mockArticles = [
     {
       id: 1,
       title: "The Ultimate Guide to JavaScript Array Methods",

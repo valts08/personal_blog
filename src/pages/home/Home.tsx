@@ -1,10 +1,12 @@
-import LogoImg from '../../components/logoImg';
+import LogoImg from '../../components/LogoImg';
+import ArticleList from '../../components/ArticleList';
+import { mockArticles } from '../../utils/mockArticles';
 
 const Home = () => {
 
     return (
-        <section>
-            <article className="pb-10 pt-5 px-5">
+        <section className='px-5'>
+            <article className="pb-10 pt-5">
                 <div className='py-5'>
                     <h1 className="text-2xl font-bold pb-5">Hi, I'm Paulina</h1>
                     <p>Welcome to my little corner of the internet! 
@@ -17,6 +19,13 @@ const Home = () => {
                     <LogoImg type='github' />
                     <LogoImg type='linkedin' />
                     <LogoImg type='frontend-master' />
+                </div>
+            </article>
+            <div className='border border-neutral-300'></div>
+            <article className='py-10'>
+                <div>
+                    <h1 className='text-2xl font-bold pb-5'>Lastest Articles</h1>
+                    <ArticleList articles={mockArticles}/>
                 </div>
             </article>
         </section>

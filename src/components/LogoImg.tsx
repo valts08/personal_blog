@@ -1,5 +1,4 @@
 const LogoImg = (props: any) => {
-    
 
     return (
         <img 

@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="mt-5 ml-5 mr-5 max-w-8/10 md:max-w-6/10">
       <Navbar />
-      <div className="mx-auto max-w-14/15 border-2 border-b-gray-950">
+      <div className="mx-auto max-w-98/100 border-2 border-b-gray-950">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/blog' element={<Blog />} />
