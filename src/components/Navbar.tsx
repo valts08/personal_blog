@@ -1,18 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 const Navbar = () => {
 
     const [lightTheme, setLightTheme] = useState(true);
 
+    const activeLinkStyles = "underline decoration-3 decoration-sky-500/50"
+    const hoverLinkStyles = "hover:underline hover:decoration-3 hover:decoration-sky-500/50"
+
     return (
         <div className="text-neutral-700 px-2 flex justify-between border-2 rounded-lg min-h-[55px] items-center border-neutral-100">
             <img src="./assets/images/image-avatar.jpg" alt="profile-image" />
             <div className="flex gap-x-4 items-center">
-                <Link to="/"> Home</Link>
-                <Link to="/blog"> Blog</Link>
-                <Link to="/about"> About</Link>
-                <Link to="/newsletter"> Newsletter</Link>
+                <NavLink to="/" className={({ isActive, isPending }) => {
+                    return isActive ? activeLinkStyles : hoverLinkStyles
+                }}> Home</NavLink>
+                <NavLink to="/blog" className={({ isActive, isPending }) => {
+                    return isActive ? activeLinkStyles : hoverLinkStyles
+                }}> Blog</NavLink>
+                <NavLink to="/about" className={({ isActive, isPending }) => {
+                    return isActive ? activeLinkStyles : hoverLinkStyles
+                }}> About</NavLink>
+                <NavLink to="/newsletter" className={({ isActive, isPending }) => {
+                    return isActive ? activeLinkStyles : hoverLinkStyles
+                }}> Newsletter</NavLink>
                 <button
                     className="border-1 rounded-lg border-neutral-200 bg-neutral-100 min-h-[40px] py-[5px]"
                     onClick={() => setLightTheme(!lightTheme)}>

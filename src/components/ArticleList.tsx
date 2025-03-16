@@ -8,7 +8,7 @@ interface ArticleListProps {
 const ArticleList = ({ articles }: ArticleListProps) => {
 
     return (
-        <ul>
+        <ul className="my-2">
             {articles && articles.map(article  => {
                 return <ArticleItem key={article.id} {...article} />
             })}
