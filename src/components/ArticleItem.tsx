@@ -33,7 +33,7 @@ const ArticleItem = (article: ArticleItemType) => {
     return (
         <li className="pb-2">
             <h1 className="font-medium">
-                <a href="" className="hover:text-gray-700 hover:underline">{article.title}</a>
+                <a href="" className="hover:text-gray-700 hover:underline focus:border-2 focus:rounded-md focus:border-sky-600">{article.title}</a>
             </h1>
             <span className="text-gray-500 italic text-sm">{getFullDate(article.date)}</span>
         </li>

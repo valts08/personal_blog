@@ -8,9 +8,9 @@ import Newsletter from './pages/newsletter/Newsletter';
 function App() {
 
   return (
-    <div className="mt-5 ml-5 mr-5 max-w-8/10 md:max-w-6/10">
+    <div className="mt-5 mx-auto max-w-9/10 md:max-w-8/10 lg:max-w-6/10">
       <Navbar />
-      <div className="mx-auto max-w-98/100 border-2 border-b-gray-950">
+      <div className="mx-auto max-w-98/100 border-x-[1.5px] border-b-[1.5px] bg-neutral-50 border-neutral-100">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/blog' element={<Blog />} />
