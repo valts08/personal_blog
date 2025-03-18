@@ -1,11 +1,12 @@
 import LogoImg from '../../components/LogoImg';
 import ArticleList from '../../components/ArticleList';
+import Footer from '../../components/Footer';
 import { mockArticles } from '../../utils/mockArticles';
 
 const Home = () => {
 
     return (
-        <section className='px-5'>
+        <section>
             <article className="pb-10 pt-5">
                 <div className='py-5'>
                     <h1 className="text-3xl font-bold pb-5 underline decoration-sky-500/50 decoration-6 underline-offset-0">Hi, I'm Paulina</h1>
@@ -30,17 +31,6 @@ const Home = () => {
                 <span className='underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600'>View all articles</span>
             </article>
             <div className='border border-neutral-300'></div>
-            <footer className='pt-5 mb-5'>
-                <div className='flex justify-between'>
-                    <span className='text-sm justify-self-start'>Made with ❤️ and ☕</span>
-                    <div className="flex gap-x-3.5">
-                        <LogoImg type='x' />
-                        <LogoImg type='github' />
-                        <LogoImg type='linkedin' />
-                        <LogoImg type='frontend-master' />
-                    </div>
-                </div>
-            </footer>
         </section>
     );
 }
