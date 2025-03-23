@@ -14,16 +14,16 @@ const Navbar = () => {
                 <img className="mx-auto border-1 rounded-xl border-neutral-200" src="/images/image-avatar.jpg" alt="profile-image" />
             </Link>
             <div className="flex gap-x-4 items-center">
-                <NavLink to="/" className={({ isActive, isPending }) => {
+                <NavLink to="/" className={({ isActive }) => {
                     return isActive ? activeLinkStyles : hoverLinkStyles
                 }}> Home</NavLink>
-                <NavLink to="/blog" className={({ isActive, isPending }) => {
+                <NavLink to="/blog" className={({ isActive }) => {
                     return isActive ? activeLinkStyles : hoverLinkStyles
                 }}> Blog</NavLink>
-                <NavLink to="/about" className={({ isActive, isPending }) => {
+                <NavLink to="/about" className={({ isActive }) => {
                     return isActive ? activeLinkStyles : hoverLinkStyles
                 }}> About</NavLink>
-                <NavLink to="/newsletter" className={({ isActive, isPending }) => {
+                <NavLink to="/newsletter" className={({ isActive }) => {
                     return isActive ? activeLinkStyles : hoverLinkStyles
                 }}> Newsletter</NavLink>
                 <button

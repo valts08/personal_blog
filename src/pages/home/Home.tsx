@@ -30,7 +30,6 @@ const Home = () => {
                 </div>
                 <Link to="/" className='underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600'>View all articles</Link>
             </article>
-            <div className='border border-neutral-300'></div>
         </section>
     );
 }
