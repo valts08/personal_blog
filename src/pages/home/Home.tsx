@@ -1,6 +1,6 @@
 import LogoImg from '../../components/LogoImg';
 import ArticleList from '../../components/ArticleList';
-import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
 import { mockArticles } from '../../utils/mockArticles';
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
                     <LogoImg type='x' />
                     <LogoImg type='github' />
                     <LogoImg type='linkedin' />
-                    <LogoImg type='frontend-master' />
+                    <LogoImg type='frontend-mentor' />
                 </div>
             </article>
             <div className='border border-neutral-300'></div>
@@ -28,7 +28,7 @@ const Home = () => {
                     <h1 className='text-2xl font-bold pb-4'>Latest Articles</h1>
                     <ArticleList articles={mockArticles}/>
                 </div>
-                <span className='underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600'>View all articles</span>
+                <Link to="/" className='underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600'>View all articles</Link>
             </article>
             <div className='border border-neutral-300'></div>
         </section>

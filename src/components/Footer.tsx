@@ -10,7 +10,7 @@ const Footer = () => {
                     <LogoImg type='x' />
                     <LogoImg type='github' />
                     <LogoImg type='linkedin' />
-                    <LogoImg type='frontend-master' />
+                    <LogoImg type='frontend-mentor' />
                 </div>
             </div>
         </footer>

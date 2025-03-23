@@ -1,8 +1,5 @@
+import { Link } from "react-router-dom";
 import ArticleItemType from "../types/ArticleItemType";
-// interface weekDay {
-//     identifier: string,
-//     day: string
-// }
 
 const ArticleItem = (article: ArticleItemType) => {
     const months = new Map([
@@ -33,7 +30,7 @@ const ArticleItem = (article: ArticleItemType) => {
     return (
         <li className="pb-2">
             <h1 className="font-medium">
-                <a href="" className="hover:text-gray-700 hover:underline focus:border-2 focus:rounded-md focus:border-sky-600">{article.title}</a>
+                <Link to="/" className="hover:text-gray-700 hover:underline focus:p-[1px] focus:border-2 focus:rounded-md focus:border-sky-600">{article.title}</Link>
             </h1>
             <span className="text-gray-500 italic text-sm">{getFullDate(article.date)}</span>
         </li>
