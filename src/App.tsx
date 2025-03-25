@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="mt-5 mx-auto max-w-9/10 md:max-w-8/10 lg:max-w-6/10">
       <Navbar />
-      <div className="px-5 mx-auto max-w-98/100 border-x-[1.5px] border-b-[1.5px] bg-neutral-100 border-neutral-100">
+      <div className="px-5 mx-auto max-w-98/100 border-x border-b bg-neutral-100 border-neutral-200">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/blog' element={<Blog />} />

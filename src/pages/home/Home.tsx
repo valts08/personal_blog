@@ -22,7 +22,7 @@ const Home = () => {
                     <LogoImg type='frontend-mentor' />
                 </div>
             </article>
-            <div className='border border-neutral-300'></div>
+            <div className='border-b border-neutral-300'></div>
             <article className='py-10'>
                 <div>
                     <h1 className='text-2xl font-bold pb-4'>Latest Articles</h1>

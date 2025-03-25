@@ -9,7 +9,7 @@ const Navbar = () => {
     const hoverLinkStyles = "hover:underline hover:decoration-3 hover:decoration-sky-500/50"
 
     return (
-        <div className="text-neutral-700 bg-white px-2 flex justify-between border-[1.5px] rounded-lg min-h-[55px] items-center border-neutral-100">
+        <div className="text-neutral-700 bg-white px-2 flex justify-between border rounded-lg min-h-[55px] items-center border-neutral-200">
             <Link to="/" className="w-[40px] h-[40px]"> {/* REDIRECT TO USER PROFILE */}
                 <img className="mx-auto border-1 rounded-xl border-neutral-200" src="/images/image-avatar.jpg" alt="profile-image" />
             </Link>
