@@ -1,4 +1,4 @@
-import LogoImg from "./LogoImg";
+import MediaLinks from "./MediaLinks";
 
 const Footer = () => {
 
@@ -9,10 +9,7 @@ const Footer = () => {
                 <div className='flex justify-between'>
                     <span className='text-sm place-self-center'>Made with ❤️ and ☕</span>
                     <div className="flex gap-x-3.5 place-self-center">
-                        <LogoImg type='x' />
-                        <LogoImg type='github' />
-                        <LogoImg type='linkedin' />
-                        <LogoImg type='frontend-mentor' />
+                        <MediaLinks />
                     </div>
                 </div>
             </footer>
