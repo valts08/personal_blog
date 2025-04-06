@@ -6,7 +6,7 @@ import { mockArticles } from '../../utils/mockArticles';
 const Home = () => {
 
     return (
-        <section>
+        <section className='min-h-[750px]'>
             <article className="pb-10 pt-5">
                 <div className='py-5'>
                     <h1 className="text-3xl font-bold pb-5 underline decoration-sky-500/50 decoration-6 underline-offset-0">Hi, I'm Paulina</h1>
