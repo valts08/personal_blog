@@ -3,7 +3,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 
 const useThemeContext = () => {
     const context = useContext(ThemeContext);
-    if (!context) {
+    if (context === null) {
         throw new Error("useThemeContext must be used within a ThemeContextProvider")
     };
     return context

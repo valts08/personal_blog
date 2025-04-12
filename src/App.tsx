@@ -10,27 +10,37 @@ import { useState } from "react";
 
 function App() {
 
-  const [globalDarkTheme, setGlobalDarkTheme] = useState<boolean | null>(false)
+  const [globalDarkTheme, setGlobalDarkTheme] = useState<boolean>(false)
+
+  let bodyColorToggleMap = new Map([
+    [true, "bg-neutral-900"],
+    [false, "bg-neutral-100"]
+  ])
+  // getting the body element so that we can change the background
+  const htmlBody = document.getElementsByTagName("body")[0]
+  bodyColorToggleMap.get(globalDarkTheme)
+  htmlBody.setAttribute("class", `${bodyColorToggleMap.get(globalDarkTheme)}`)
 
   const handleGlobalThemeToggle = () => {
-    setGlobalDarkTheme(prevValue => !prevValue)
+    setGlobalDarkTheme(!globalDarkTheme)
+    htmlBody.setAttribute("class", `${bodyColorToggleMap.get(!globalDarkTheme)}`)
   }
 
   return (
-    <div className="mt-5 mx-auto max-w-9/10 md:max-w-8/10 lg:max-w-6/10">
-      <ThemeContext.Provider value={globalDarkTheme}>
+    <ThemeContext.Provider value={globalDarkTheme}>
+      <div className="mt-5 mx-auto max-w-9/10 md:max-w-8/10 lg:max-w-6/10">
         <Navbar toggleFunc={handleGlobalThemeToggle}/>
-        <div className="px-5 mx-auto max-w-98/100 border-x border-b bg-neutral-100 border-neutral-200">
+        <div className={`px-5 mx-auto max-w-98/100 border-x border-b ${globalDarkTheme ? "bg-neutral-900 border-neutral-700" : "bg-neutral-100 border-neutral-200" }`}>
           <Routes>
-            <Route path='personal_blog/' element={<Home />} />
-            <Route path='personal_blog/blog' element={<Blog />} />
-            <Route path='personal_blog/about' element={<About />} />
-            <Route path='personal_blog/newsletter' element={<Newsletter />} />
+            <Route path='/personal_blog' element={<Home />} />
+            <Route path='/blog' element={<Blog />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/newsletter' element={<Newsletter />} />
           </Routes>
           <Footer />
         </div>
-      </ThemeContext.Provider>
-    </div>
+      </div>
+    </ThemeContext.Provider>
   )
 }
 

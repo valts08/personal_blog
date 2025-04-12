@@ -3,8 +3,11 @@ import ArticleList from '../../components/ArticleList';
 import PageHeading from '../../components/PageHeading';
 import { Link } from 'react-router-dom';
 import { mockArticles } from '../../utils/mockArticles';
+import useThemeContext from '../../hooks/useThemeContext';
 
 const Home = () => {
+
+    const globalDarkTheme = useThemeContext()
 
     return (
         <section className='min-h-[750px]'>
