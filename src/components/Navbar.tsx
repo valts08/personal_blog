@@ -12,13 +12,13 @@ const Navbar = ({ toggleFunc }: VoidFunction) => {
 
     const globalDarkTheme = useThemeContext() // fix this later, don't leave any type
 
-    const activeLinkStyles = "underline decoration-3 decoration-sky-500/50"
+    const activeLinkStyles = `${globalDarkTheme ? "text-white" : ""} underline decoration-3 decoration-sky-500/50`
     const hoverLinkStyles = "hover:underline hover:decoration-3 hover:decoration-sky-500/50"
 
     return (
         <div className={`${globalDarkTheme ? "text-neutral-400 bg-neutral-800 border-neutral-700" : "text-neutral-700 bg-white border-neutral-200"}  px-2 flex justify-between border rounded-lg min-h-[55px] items-center`}>
             <Link to="/personal_blog" className="w-[40px] h-[40px]"> {/* REDIRECT TO USER PROFILE */}
-                <img className="mx-auto border-1 rounded-lg" src={AvatarImg} alt="profile-image" />
+                <img className="mx-auto rounded-lg" src={AvatarImg} alt="profile-image" />
             </Link>
             <div className="flex gap-x-4 items-center">
                 <NavLink to="/personal_blog" className={({ isActive }) => {

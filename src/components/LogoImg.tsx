@@ -2,8 +2,11 @@ import githubLogo from '../../src/assets/images/logo-github.svg'
 import xLogo from '../../src/assets/images/logo-x.svg'
 import linkedinLogo from '../../src/assets/images/logo-linkedin.svg'
 import frontendmentorLogo from '../../src/assets/images/logo-frontend-mentor.svg'
+import useThemeContext from '../hooks/useThemeContext'
 
 const LogoImg = (props: any) => {
+
+    const globalDarkTheme = useThemeContext()
 
     let pageLink = '';
     let imgSrc = '';
@@ -32,11 +35,11 @@ const LogoImg = (props: any) => {
     // figure out how to get a border on focus on the socials link buttons
     return (
         <a href={pageLink}>
-            <div className="w-[40px] h-[40px] border-1 rounded-lg border-neutral-200 bg-neutral focus:outline-2 focus:outline-offset-4 focus:rounded-md focus:border-sky-600">
+            <div className={`${globalDarkTheme ? "brightness-0 invert" : ""} w-[40px] h-[40px] bg-neutral focus:outline-2 focus:outline-offset-4 focus:rounded-md focus:border-sky-600`}>
                 <img 
                     className="my-[10px] mx-auto"
-                    src={imgSrc} 
-                    alt={`${props.type}-logo`} 
+                    src={imgSrc}
+                    alt={`${props.type}-logo`}
                 />
             </div>
         </a>

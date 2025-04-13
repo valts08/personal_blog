@@ -2,14 +2,16 @@ import WorkspaceImgLarge from "../../assets/images/image-workspace-large.jpg"
 import WorkspaceImgSmall from "../../assets/images/image-workspace-small.jpg"
 import MediaLinks from "../../components/MediaLinks";
 import PageHeading from "../../components/PageHeading";
+import useThemeContext from "../../hooks/useThemeContext";
 
 const About = () => {
+    const globalDarkTheme = useThemeContext()
 
     return (
         <section className="min-h-[750px] pt-10 pb-3">
             <PageHeading>About</PageHeading>
             <article>
-                <div className="py-5 text-justify">
+                <div className={`${globalDarkTheme ? "text-white" : ""} py-5 text-justify`}>
                     <p>
                         Hi, I’m Paulina! Ever since I can remember, 
                         I’ve had a passion for creativity and problem-solving. 
@@ -28,34 +30,36 @@ const About = () => {
                         The combination of mental focus and physical endurance is a perfect parallel to tackling tough coding challenges!
                     </p>
                 </div>
-                <h4>Some of my favorite books:</h4>
-                <ul className="py-5 marker:text-gray-950">
-                    <li>
-                        <span className="font-semibold">“The Pragmatic Programmer”</span> by Andrew Hunt and David Thomas (for helpful insights into software development)
-                    </li>
-                    <li>
-                        <span className="font-semibold">“Ready Player One”</span> by Ernest Cline (for some futuristic escapism)
-                    </li>
-                    <li>
-                        <span className="font-semibold">“The Hobbit”</span> by J.R.R. Tolkien (for a bit of fantasy fun)
-                    </li>
-                    <li>
-                        <span className="font-semibold">“Educated”</span> by Tara Westover (for incredible inspiration)
-                    </li>
-                </ul>
-                <span>
-                    I absolutely love my workspace as a place that inspires me to do my best work, so I thought I’d share it with you:
-                </span>
+                <article  className={`${globalDarkTheme ? "text-white" : ""}`}>
+                    <h4>Some of my favorite books:</h4>
+                    <ul className="py-5 marker:text-gray-950">
+                        <li>
+                            <span className="font-semibold">“The Pragmatic Programmer”</span> by Andrew Hunt and David Thomas (for helpful insights into software development)
+                        </li>
+                        <li>
+                            <span className="font-semibold">“Ready Player One”</span> by Ernest Cline (for some futuristic escapism)
+                        </li>
+                        <li>
+                            <span className="font-semibold">“The Hobbit”</span> by J.R.R. Tolkien (for a bit of fantasy fun)
+                        </li>
+                        <li>
+                            <span className="font-semibold">“Educated”</span> by Tara Westover (for incredible inspiration)
+                        </li>
+                    </ul>
+                    <span>
+                        I absolutely love my workspace as a place that inspires me to do my best work, so I thought I’d share it with you:
+                    </span>
+                </article>
                 <div className="my-6">
                     <img className="rounded-xl" src={window.innerWidth > 500 ? WorkspaceImgLarge : WorkspaceImgSmall} alt="workspace-image" />
                 </div>
-                <p>
+                <p  className={`${globalDarkTheme ? "text-white" : ""}`}>
                     I hope this blog not only documents my growth but also helps others see that coding can be for everyone. 
                     Thanks for joining me on this journey!
                 </p>
             </article>
             <article className="pb-9">
-                <h2 className="text-2xl font-semibold py-4">Follow me</h2>
+                <h2 className={`${globalDarkTheme ? "text-white" : ""} text-2xl font-semibold py-4`}>Follow me</h2>
                 <div className="flex gap-x-3 place-self-start">
                     <MediaLinks />
                 </div>

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import ArticleItemType from "../types/ArticleItemType";
+import useThemeContext from "../hooks/useThemeContext";
+import Divider from "./Divider";
 
 const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string}) => {
+    const globalDarkTheme = useThemeContext()
+
     const months = new Map([
         [0,"January"],
         [1,"Febuary"],
@@ -27,16 +31,16 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
 
     return (
         <>
-        {type === 'blog' && <div className='border-b border-neutral-200'></div>}
-        <li className="py-2">
-            <h1 className="font-medium">
-                <Link to="/" className="font-semibold hover:text-gray-700 hover:underline focus:p-[1px] focus:border-2 focus:rounded-md focus:border-sky-600">{article.title}</Link>
-            </h1>
-            <span className="text-gray-500 italic text-sm">{getFullDate(article.date)}</span>
-            {type === 'blog' && (
-                <span className="block font-light">{article.excerpt}</span>
-            )}
-        </li>
+            {type === 'blog' && <Divider />}
+            <li className="py-2">
+                <h1 className={`${globalDarkTheme ? "text-white" : ""} font-medium`}>
+                    <Link to="/" className="font-semibold hover:text-gray-700 hover:underline focus:p-[1px] focus:border-2 focus:rounded-md focus:border-sky-600">{article.title}</Link>
+                </h1>
+                <span className="text-gray-400 italic text-sm">{getFullDate(article.date)}</span>
+                {type === 'blog' && (
+                    <span className={`${globalDarkTheme ? "text-gray-400" : ""} block font-light`}>{article.excerpt}</span>
+                )}
+            </li>
         </>
     )
 }
