@@ -1,8 +1,12 @@
 import AvatarImg from '../../src/assets/images/image-avatar.jpg'
 import MoonIcon from '../../src/assets/images/icon-moon.svg'
 import SunIcon from '../../src/assets/images/icon-sun.svg'
-import { NavLink, Link } from "react-router-dom";
+import IconMenu from '../../src/assets/images/icon-menu.svg'
+import IconMenuClose from '../../src/assets/images/icon-menu-close.svg'
+import { Link } from "react-router-dom";
 import useThemeContext from '../hooks/useThemeContext';
+import { useState } from 'react'
+import MainNavigation from './MainNavigation'
 
 interface VoidFunction {
     toggleFunc: () => void // look up how to make interfaces reusable
@@ -10,10 +14,13 @@ interface VoidFunction {
 
 const Navbar = ({ toggleFunc }: VoidFunction) => {
 
-    const globalDarkTheme = useThemeContext() // fix this later, don't leave any type
+    const globalDarkTheme = useThemeContext()
+    const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
+    const smallScreen = window.innerWidth < 500
 
-    const activeLinkStyles = `${globalDarkTheme ? "text-white" : ""} underline decoration-3 decoration-sky-500/50`
-    const hoverLinkStyles = "hover:underline hover:decoration-3 hover:decoration-sky-500/50"
+    const handleDropdownToggle = () => {
+        setDropdownIsOpen(prevState => !prevState)
+    }
 
     return (
         <div className={`${globalDarkTheme ? "text-neutral-400 bg-neutral-800 border-neutral-700" : "text-neutral-700 bg-white border-neutral-200"}  px-2 flex justify-between border rounded-lg min-h-[55px] items-center`}>
@@ -21,20 +28,26 @@ const Navbar = ({ toggleFunc }: VoidFunction) => {
                 <img className="mx-auto rounded-lg" src={AvatarImg} alt="profile-image" />
             </Link>
             <div className="flex gap-x-4 items-center">
-                <NavLink to="/personal_blog" className={({ isActive }) => {
-                    return isActive ? activeLinkStyles : hoverLinkStyles
-                }}> Home</NavLink>
-                <NavLink to="/blog" className={({ isActive }) => {
-                    return isActive ? activeLinkStyles : hoverLinkStyles
-                }}> Blog</NavLink>
-                <NavLink to="/about" className={({ isActive }) => {
-                    return isActive ? activeLinkStyles : hoverLinkStyles
-                }}> About</NavLink>
-                <NavLink to="/newsletter" className={({ isActive }) => {
-                    return isActive ? activeLinkStyles : hoverLinkStyles
-                }}> Newsletter</NavLink>
+                {!smallScreen && <MainNavigation />}
+                <section className={`${smallScreen ? "" : "hidden"}`}>
+                    {dropdownIsOpen ? (
+                        <button
+                            className={`${globalDarkTheme ? "bg-white" : "bg-neutral-800"} w-[40px] h-[40px] rounded-lg py-[5px]`}
+                            onClick={() => handleDropdownToggle()}>
+                            <img className={`${globalDarkTheme ? 'invert' : ''} mx-auto`}  src={IconMenuClose} 
+                            alt="close-dropdown" />
+                        </button>
+                    ) : (
+                        <button
+                            className={`${globalDarkTheme ? "bg-neutral-800" : "bg-white"} w-[40px] h-[40px] rounded-lg py-[5px]`}
+                            onClick={() => handleDropdownToggle()}>
+                            <img className={`${globalDarkTheme ? 'brightness-0 invert' : ''} mx-auto`}  src={IconMenu} 
+                            alt="open-dropdown" />
+                        </button>
+                    )}
+                </section>
                 <button
-                    className={`${globalDarkTheme ? "bg-neutral-900 border-neutral-700" : "border-neutral-200 bg-neutral-100"} w-[40px] h-[40px] border-1 rounded-lg  py-[5px]`}
+                    className={`${globalDarkTheme ? "bg-neutral-900 border-neutral-700" : "border-neutral-200 bg-neutral-100"} w-[40px] h-[40px] border-1 rounded-lg py-[5px]`}
                     onClick={() => toggleFunc()}>
                     <img className='mx-auto'  src={globalDarkTheme ? SunIcon : MoonIcon} 
                     alt={globalDarkTheme ? "moon-image" : "sun-image"} />
