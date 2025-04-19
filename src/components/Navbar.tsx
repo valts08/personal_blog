@@ -6,7 +6,9 @@ import IconMenuClose from '../../src/assets/images/icon-menu-close.svg'
 import { Link } from "react-router-dom";
 import useThemeContext from '../hooks/useThemeContext';
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import MainNavigation from './MainNavigation'
+import PortalNavigation from './PortalNavigation'
 
 interface VoidFunction {
     toggleFunc: () => void // look up how to make interfaces reusable
@@ -17,9 +19,14 @@ const Navbar = ({ toggleFunc }: VoidFunction) => {
     const globalDarkTheme = useThemeContext()
     const [dropdownIsOpen, setDropdownIsOpen] = useState(false)
     const smallScreen = window.innerWidth < 500
+    const appContainer = document.getElementById("page-container") || document.body
 
     const handleDropdownToggle = () => {
         setDropdownIsOpen(prevState => !prevState)
+    }
+
+    const closeOnClick = () => {
+        setDropdownIsOpen(false)
     }
 
     return (
@@ -27,7 +34,11 @@ const Navbar = ({ toggleFunc }: VoidFunction) => {
             <Link to="/personal_blog" className="w-[40px] h-[40px]"> {/* REDIRECT TO USER PROFILE */}
                 <img className="mx-auto rounded-lg" src={AvatarImg} alt="profile-image" />
             </Link>
-            <div className="flex gap-x-4 items-center">
+            <div className="flex gap-x-4 items-center relative">
+                {dropdownIsOpen && createPortal(
+                    <PortalNavigation closeOnClick={closeOnClick}/>,
+                    appContainer
+                )}
                 {!smallScreen && <MainNavigation />}
                 <section className={`${smallScreen ? "" : "hidden"}`}>
                     {dropdownIsOpen ? (
