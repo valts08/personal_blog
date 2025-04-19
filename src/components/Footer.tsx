@@ -11,7 +11,7 @@ const Footer = () => {
             <footer className='pt-5 mb-5'>
                 <div className='flex justify-between'>
                     <span className={`${globalDarkTheme ? "text-white" : ""} text-sm place-self-center`}>Made with ❤️ and ☕</span>
-                    <div className="flex gap-x-3.5 place-self-center">
+                    <div className="flex gap-x-2 place-self-center">
                         <MediaLinks placement="footer" />
                     </div>
                 </div>
