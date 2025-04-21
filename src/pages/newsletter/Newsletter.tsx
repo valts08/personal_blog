@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import errorIcon from "../../assets/images/icon-error.svg"
 import successIcon from "../../assets/images/icon-success.svg"
@@ -49,7 +48,7 @@ const Newsletter = () => {
                                     <span className="text-green-700 pl-2">You're subscribed! Check your email for updates.</span>
                                 </div>
                             }
-                            {errors.email?.message && 
+                            {!isSubmitSuccessful && errors.email?.message && 
                                 <div className="pt-2">
                                     <img src={errorIcon} alt="error-icon" className="inline" />
                                     <span className="text-red-700 pl-2">{errors.email?.message}</span>
