@@ -5,6 +5,7 @@ import Divider from "./Divider";
 
 const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string}) => {
     const globalDarkTheme = useThemeContext()
+    const focusStyles = "focus:outline-offset-4 focus:rounded-sm focus:border-sky-500/50"
 
     const months = new Map([
         [0,"January"],
@@ -34,7 +35,7 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
             {type === 'blog' && <Divider />}
             <li className="py-2">
                 <h1 className={`${globalDarkTheme ? "text-white" : ""} font-medium`}>
-                    <Link to="/" className="font-semibold hover:text-gray-700 hover:underline focus:p-[1px] focus:border-2 focus:rounded-md focus:border-sky-600">{article.title}</Link>
+                    <Link to="/" className={`font-semibold hover:text-gray-700 hover:underline ${focusStyles}`}>{article.title}</Link>
                 </h1>
                 <span className="text-gray-400 italic text-sm">{getFullDate(article.date)}</span>
                 {type === 'blog' && (

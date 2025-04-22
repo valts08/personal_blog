@@ -10,6 +10,7 @@ interface Inputs {
 const Newsletter = () => {
     const globalDarkTheme = useThemeContext()
     const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const focusStyles = "focus:outline-offset-4 focus:border-sky-500/50"
 
     const { 
         register, 
@@ -34,7 +35,7 @@ const Newsletter = () => {
                 <div className="flex flex-col">
                     <span className={`${globalDarkTheme ? "text-white" : ""}`}>Email Address</span>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input className={`${globalDarkTheme ? "bg-neutral-800 border-neutral-600 text-neutral-300" : "border-gray-300 bg-white"} ${isSubmitSuccessful ? "border-green-700" : ""} ${errors.email?.message ? "border-red-700" : ""} border rounded-lg mt-1 py-2 pl-2 w-100/100`} type="text" placeholder="email@example.com"
+                        <input className={`${globalDarkTheme ? "bg-neutral-800 border-neutral-600 text-neutral-300" : "border-gray-300 bg-white"} ${isSubmitSuccessful ? "border-green-700" : ""} ${errors.email?.message ? "border-red-700" : ""} ${focusStyles} hover:cursor-pointer border rounded-lg mt-1 py-2 pl-2 w-100/100`} type="text" placeholder="email@example.com"
                             {...register("email",
                             {
                                 required: "Email is required",
@@ -54,7 +55,7 @@ const Newsletter = () => {
                                     <span className="text-red-700 pl-2">{errors.email?.message}</span>
                                 </div>
                             }
-                        <input type="submit" defaultValue={`Stay updated`} className="block max-w-[150px] rounded-lg font-medium bg-blue-300 mt-3 py-3 px-5 hover:cursor-pointer"/>
+                        <input type="submit" defaultValue={`Stay updated`} className={`${focusStyles} block max-w-[150px] rounded-lg font-medium bg-blue-500/50 mt-3 py-3 px-5 hover:bg-blue-700/50 hover:cursor-pointer`}/>
                     </form>
                     <span className="mt-1 text-gray-500">Unsubscribe anytime. No spam, I promise 🙂</span>
                 </div>
