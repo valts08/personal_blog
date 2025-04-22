@@ -7,8 +7,8 @@ import { mockArticles } from '../../utils/mockArticles';
 import useThemeContext from '../../hooks/useThemeContext';
 
 const Home = () => {
-
     const globalDarkTheme = useThemeContext()
+    const focusStyles = "focus:outline-offset-3 focus:rounded-md focus:border-sky-500/50"
 
     return (
         <section className="min-h-[750px]">
@@ -31,7 +31,7 @@ const Home = () => {
                     <h1 className={`${globalDarkTheme ? "text-white" : ""} text-2xl font-bold pb-4`}>Latest Articles</h1>
                     <ArticleList articles={mockArticles}/>
                 </div>
-                <Link to="/" className={`${globalDarkTheme ? "text-white" : ""} underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600`}>View all articles</Link>
+                <Link to="/" className={`${globalDarkTheme ? "text-white" : ""} ${focusStyles} underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600`}>View all articles</Link>
             </article>
         </section>
     );

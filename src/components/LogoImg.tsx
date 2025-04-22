@@ -4,7 +4,7 @@ const LogoImg = ({ logo }: any) => {
     const globalDarkTheme = useThemeContext()
 
     return (
-        <div className={`${globalDarkTheme ? "brightness-0 invert" : ""} w-[40px] bg-neutral`}>
+        <div className={`${globalDarkTheme ? "brightness-0 invert" : ""} bg-neutral`}>
             <img 
                 className="my-[10px] mx-auto"
                 src={logo.icon}
