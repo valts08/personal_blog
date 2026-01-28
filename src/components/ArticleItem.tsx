@@ -22,7 +22,7 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
         [11,"December"],
     ])
 
-    const getFullDate = (date: string) => {
+    const getFullDate = (date: number) => {
         const publishedMonth = new Date(date).getMonth()
         const publishedDate = new Date(date).getDate()
         const publishedYear = new Date(date).getFullYear()
@@ -35,11 +35,11 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
             {type === 'blog' && <Divider />}
             <li className="py-2">
                 <h1 className={`${globalDarkTheme ? "text-white" : ""} font-medium`}>
-                    <Link to="/" className={`font-semibold hover:text-gray-700 hover:underline ${focusStyles}`}>{article.title}</Link>
+                    <Link to="/" className={`font-semibold hover:text-gray-700 hover:underline ${focusStyles}`}>{article.blog_title}</Link>
                 </h1>
-                <span className="text-gray-400 italic text-sm">{getFullDate(article.date)}</span>
+                <span className="text-gray-400 italic text-sm">{getFullDate(article.created_at_timestamp)}</span>
                 {type === 'blog' && (
-                    <span className={`${globalDarkTheme ? "text-gray-400" : ""} block font-light`}>{article.excerpt}</span>
+                    <span className={`${globalDarkTheme ? "text-gray-400" : ""} block font-light`}>{article.blog_preview}</span>
                 )}
             </li>
         </>

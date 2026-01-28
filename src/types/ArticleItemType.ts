@@ -1,14 +1,11 @@
 interface ArticleItemType {
-    id: number,
-    title: string,
-    author: string,
-    date: string,
-    category: string,
-    tags: string[],
-    excerpt: string,
-    content: string,
-    readTime: string,
-    views: number
+    user_id: number
+    blog_title: string,
+    blog_preview: string,
+    blog_content: string,
+    created_at_timestamp: number,
+    _id: string,
+    __v: number
 }
 
 export default ArticleItemType;

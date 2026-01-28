@@ -3,12 +3,25 @@ import ArticleList from '../../components/ArticleList';
 import PageHeading from '../../components/PageHeading';
 import Divider from '../../components/Divider';
 import { Link } from 'react-router-dom';
-import { mockArticles } from '../../utils/mockArticles';
 import useThemeContext from '../../hooks/useThemeContext';
+import { useQuery } from '@tanstack/react-query'
 
 const Home = () => {
     const globalDarkTheme = useThemeContext()
     const focusStyles = "focus:outline-offset-3 focus:rounded-md focus:border-sky-500/50"
+
+    const { data } = useQuery({
+        queryKey: ['homeArticles'],
+        queryFn: async () => {
+            const response = await fetch('https://blogapi-production-6036.up.railway.app/api/blogs', {
+                method: 'GET',
+                mode: 'cors'
+            });
+            return response.json();
+        }
+    })
+
+    console.log(data)
 
     return (
         <section className="min-h-[750px]">
@@ -30,9 +43,9 @@ const Home = () => {
                 <div>
                     <h1 className={`${globalDarkTheme ? "text-white" : ""} text-2xl font-bold pb-4 inline mr-2`}>Latest Articles</h1>
                     <div className='inline-block w-[40px] border-b-4 border-sky-500/50'></div>
-                    <ArticleList articles={mockArticles}/>
+                    <ArticleList articles={data?.blogs}/>
                 </div>
-                <Link to="/" className={`${globalDarkTheme ? "text-white" : ""} ${focusStyles} underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600`}>View all articles</Link>
+                <Link to="/blog" className={`${globalDarkTheme ? "text-white" : ""} ${focusStyles} underline underline-offset-3 decoration-2 decoration-sky-500/50 hover:text-gray-600`}>View all articles</Link>
             </article>
         </section>
     );

@@ -15,9 +15,9 @@ const MediaLinks = ({ placement }: MediaLinkPlacement) => {
         <>
             {mediaLinksArray && mediaLinksArray.map((mediaLink, index) => {
                 return (
-                    <a href={`${mediaLinksInfo[mediaLink].link}`} className={`${focusStyles}`}>
+                    <a href={`${mediaLinksInfo[mediaLink].link}`} key={index} className={`${focusStyles}`}>
                         <div className={`${placement && placement === "footer" ? "" : "border-1 rounded-lg border-neutral-200"} ${globalDarkTheme ? "border-neutral-700" : ""} w-[40px] hover:bg-neutral-300`}>
-                            <LogoImg key={index} logo={mediaLinksInfo[mediaLink]} />
+                            <LogoImg logo={mediaLinksInfo[mediaLink]} />
                         </div>
                     </a>
                 )

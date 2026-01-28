@@ -18,7 +18,7 @@ const ArticleList = ({ articles }: ArticleListProps) => {
     return (
         <ul className="my-2">
             {articles && articles.map(article  => 
-                <ArticleItem key={article.id} article={{...article}} type={page} />
+                <ArticleItem key={article._id} article={{...article}} type={page} />
             )}
         </ul>
     )
