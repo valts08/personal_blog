@@ -17,9 +17,6 @@ const Blog = () => {
         }
     })
 
-    console.log(data)
-
-
     return (
         <section className='min-h-[750px]'>
             <article className="pt-10 pb-3">

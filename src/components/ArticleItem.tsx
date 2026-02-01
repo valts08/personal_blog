@@ -9,7 +9,7 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
 
     const months = new Map([
         [0,"January"],
-        [1,"Febuary"],
+        [1,"February"],
         [2,"March"],
         [3,"April"],
         [4,"May"],
@@ -34,8 +34,8 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
         <>
             {type === 'blog' && <Divider />}
             <li className="py-2">
-                <h1 className={`${globalDarkTheme ? "text-white" : ""} font-medium`}>
-                    <Link to="/" className={`font-semibold hover:text-gray-700 hover:underline ${focusStyles}`}>{article.blog_title}</Link>
+                <h1 className={`${globalDarkTheme ? "text-white" : ""} font-semibold hover:text-gray-700 hover:underline ${focusStyles}`}>
+                    <Link to={`/blog/${article._id}`}>{article.blog_title}</Link>
                 </h1>
                 <span className="text-gray-400 italic text-sm">{getFullDate(article.created_at_timestamp)}</span>
                 {type === 'blog' && (

@@ -11,6 +11,7 @@ import About from './pages/about/About';
 import Newsletter from './pages/newsletter/Newsletter';
 import Footer from "./components/Footer";
 import { useState } from "react";
+import BlogByID from "./pages/blog/BlogByID";
 
 function App() {
 
@@ -39,7 +40,8 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route path='/personal_blog' element={<Home />} />
-                <Route path='/blog' element={<Blog />} />
+              <Route path='/blog/:id' element={<BlogByID />} />
+              <Route path='/blog' element={<Blog />} /> 
               <Route path='/about' element={<About />} />
               <Route path='/newsletter' element={<Newsletter />} />
             </Routes>

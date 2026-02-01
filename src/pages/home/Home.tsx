@@ -21,8 +21,6 @@ const Home = () => {
         }
     })
 
-    console.log(data)
-
     return (
         <section className="min-h-[750px]">
             <article className="pb-10 pt-5">
