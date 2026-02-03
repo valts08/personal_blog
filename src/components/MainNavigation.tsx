@@ -15,7 +15,7 @@ const MainNavigation = () => {
             }}> Home</NavLink>
             <NavLink to="/blog" className={({ isActive }) => {
                 return isActive ? activeLinkStyles : hoverLinkStyles
-            }}> Blog</NavLink>
+            }}> Blogs</NavLink>
             <NavLink to="/about" className={({ isActive }) => {
                 return isActive ? activeLinkStyles : hoverLinkStyles
             }}> About</NavLink>

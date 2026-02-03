@@ -1,0 +1,26 @@
+const getFullDate = (date: number) => {
+    const publishedMonth = new Date(date).getMonth()
+    const publishedDate = new Date(date).getDate()
+    const publishedYear = new Date(date).getFullYear()
+
+    return `${months.get(publishedMonth)} ${publishedDate}, ${publishedYear}`
+}
+
+
+const months = new Map([
+    [0,"January"],
+    [1,"February"],
+    [2,"March"],
+    [3,"April"],
+    [4,"May"],
+    [5,"June"],
+    [6,"July"],
+    [7,"August"],
+    [8,"September"],
+    [9,"October"],
+    [10,"November"],
+    [11,"December"],
+])
+
+
+export default getFullDate;

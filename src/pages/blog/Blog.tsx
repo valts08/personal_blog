@@ -20,7 +20,7 @@ const Blog = () => {
     return (
         <section className='min-h-[750px]'>
             <article className="pt-10 pb-3">
-                <PageHeading>My Articles</PageHeading>
+                <PageHeading>My Blogs</PageHeading>
                 <p className={`${globalDarkTheme ? "text-white" : ""}`}>Below are all my recent blog posts. Click on any title to read the full article.</p>
             </article>
             <ArticleList articles={data?.blogs}/>

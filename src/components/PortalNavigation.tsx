@@ -21,7 +21,7 @@ const PortalNavigation = ({ closeOnClick }: VoidFunction) => {
             <Divider />
             <NavLink to="/blog" onClick={() => closeOnClick()} className={({ isActive }) => {
                 return `${isActive ? activeLinkStyles : hoverLinkStyles} ${sharedLinkStyles}`
-            }}> Blog</NavLink>
+            }}> Blogs</NavLink>
             <Divider />
             <NavLink to="/about" onClick={() => closeOnClick()} className={({ isActive }) => {
                 return `${isActive ? activeLinkStyles : hoverLinkStyles} ${sharedLinkStyles}`
