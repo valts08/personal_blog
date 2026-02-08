@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const globalDarkTheme = useThemeContext()
+    const lgBreakpoint = window.innerWidth >= 1280
 
     const { data } = useQuery({
         queryKey: ['blogArticles'],
@@ -26,8 +27,8 @@ const Blog = () => {
                     <p className={`${globalDarkTheme ? "text-white" : ""}`}>Below are all my recent blog posts. Click on any title to read the full article.</p>
                 </article>
                 <aside>
-                    <button className='cursor-pointer border-3 rounded-md border-sky-500/50 py-2 px-5 text-sky-500/80'>
-                        <Link to='create_blog'>Create new blog post</Link>
+                    <button className='cursor-pointer border-3 rounded-md border-sky-500/50 px-3 py-1 xl:py-2 xl:px-5 text-sky-500/80 font-extrabold lg:font-medium'>
+                        <Link to='create_blog'>{lgBreakpoint ? 'Create new blog post' : '+'}</Link>
                     </button>
                 </aside>
             </div>
