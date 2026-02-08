@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import ArticleList from "../../components/ArticleList";
 import PageHeading from '../../components/PageHeading';
 import useThemeContext from '../../hooks/useThemeContext';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const globalDarkTheme = useThemeContext()
@@ -19,10 +20,17 @@ const Blog = () => {
 
     return (
         <section className='min-h-[750px]'>
-            <article className="pt-10 pb-3">
-                <PageHeading>My Blogs</PageHeading>
-                <p className={`${globalDarkTheme ? "text-white" : ""}`}>Below are all my recent blog posts. Click on any title to read the full article.</p>
-            </article>
+            <div className='flex place-content-between pt-10'>
+                <article className="pb-3">
+                    <PageHeading>My Blogs</PageHeading>
+                    <p className={`${globalDarkTheme ? "text-white" : ""}`}>Below are all my recent blog posts. Click on any title to read the full article.</p>
+                </article>
+                <aside>
+                    <button className='cursor-pointer border-3 rounded-md border-sky-500/50 py-2 px-5 text-sky-500/80'>
+                        <Link to='create_blog'>Create new blog post</Link>
+                    </button>
+                </aside>
+            </div>
             <ArticleList articles={data?.blogs}/>
         </section>
     );
