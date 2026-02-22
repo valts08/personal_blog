@@ -57,7 +57,11 @@ const BlogByID = () => {
                                 <img src={ThreeDotsSettings} alt="..." className="max-w-[20px] max-h-[20px]" />
                             </span>
                         </div>
-                        {data?.blog.blog_content && settingsOpenStatus && createPortal(<div className="absolute blogSettingsModal w-[100px] h-[50px] border-2 border-amber-500 top-15 right-10"></div>, mainAppContainer || document.body)}
+                        {data?.blog.blog_content && settingsOpenStatus && createPortal(
+                            <div className="absolute flex flex-col place-content-evenly blogSettingsModal min-w-[125px] min-h-[50px] border-1 border-neutral-500 rounded-lg bg-white/40 top-15 right-10 p-2">
+                                <span>Edit</span>
+                                <span>Delete</span>
+                            </div>, mainAppContainer || document.body)}
                         <span className="italic">Published on {getFulLDate(data?.blog.created_at_timestamp)}</span>
                         <div className="pt-5">
                             {data?.blog.blog_content}
