@@ -37,7 +37,7 @@ function App() {
     <ThemeContext.Provider value={globalDarkTheme}>
       <div className="mt-5 mx-auto max-w-9/10 md:max-w-8/10 lg:max-w-6/10" id="page-container">
         <Navbar toggleFunc={handleGlobalThemeToggle}/>
-        <div className={`px-5 mx-auto max-w-98/100 border-x border-b ${globalDarkTheme ? "bg-neutral-900 border-neutral-700" : "bg-neutral-100 border-neutral-200" }`}>
+        <div className={`mainContainer relative px-5 mx-auto max-w-98/100 border-x border-b ${globalDarkTheme ? "bg-neutral-900 border-neutral-700" : "bg-neutral-100 border-neutral-200" }`}>
           <QueryClientProvider client={queryClient}>
             <Routes>
               <Route path='/personal_blog' element={<Home />} />
