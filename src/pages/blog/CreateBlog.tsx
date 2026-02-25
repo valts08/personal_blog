@@ -61,7 +61,7 @@ const CreateBlog = () => {
         // after sending a post request, nevigate back to blogs page
         refetch()
         // check for error message
-        if (!data?.details?.message) return
+        if (data.details || data.error) return
         navigate('/blog')
     }
 

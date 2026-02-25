@@ -5,6 +5,7 @@ import PageHeading from "../../components/PageHeading";
 import getFulLDate from "../../utils/getFullDate";
 import ThreeDotsSettings from "../../assets/images/three-dots-settings.svg"
 import { createPortal } from "react-dom";
+import BlogOptionsModal from "./BlogOptionsModal";
 
 const BlogByID = () => {
 
@@ -57,11 +58,8 @@ const BlogByID = () => {
                                 <img src={ThreeDotsSettings} alt="..." className="max-w-[20px] max-h-[20px]" />
                             </span>
                         </div>
-                        {data?.blog.blog_content && settingsOpenStatus && createPortal(
-                            <div className="absolute flex flex-col place-content-evenly blogSettingsModal min-w-[125px] min-h-[50px] border-1 border-neutral-500 rounded-lg bg-white/40 top-15 right-10 p-2">
-                                <span>Edit</span>
-                                <span>Delete</span>
-                            </div>, mainAppContainer || document.body)}
+                        {data?.blog.blog_content && settingsOpenStatus && createPortal( <BlogOptionsModal/>
+                            , mainAppContainer || document.body)}
                         <span className="italic">Published on {getFulLDate(data?.blog.created_at_timestamp)}</span>
                         <div className="pt-5">
                             {data?.blog.blog_content}

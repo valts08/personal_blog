@@ -16,8 +16,7 @@ const Blog = () => {
                 mode: 'cors'
             });
             return response.json();
-        },
-        staleTime: 1000 * 60 * 1
+        }
     })
 
     return (
