@@ -4,15 +4,16 @@ import {
     QueryClient
 } from '@tanstack/react-query';
 import { ThemeContext } from "./contexts/ThemeContext";
+import { useState } from "react";
 import Navbar from './components/Navbar'
 import Home from './pages/home/Home';
 import Blog from './pages/blog/Blog';
 import About from './pages/about/About';
 import Newsletter from './pages/newsletter/Newsletter';
 import Footer from "./components/Footer";
-import { useState } from "react";
 import BlogByID from "./pages/blog/BlogByID";
 import CreateBlog from "./pages/blog/CreateBlog";
+import EditBlog from "./pages/blog/EditBlog";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
             <Routes>
               <Route path='/personal_blog' element={<Home />} />
               <Route path='/blog/create_blog' element={<CreateBlog/>} />
+              <Route path='/blog/:id/edit' element={<EditBlog/>} />
               <Route path='/blog/:id' element={<BlogByID />} />
               <Route path='/blog' element={<Blog />} /> 
               <Route path='/about' element={<About />} />
