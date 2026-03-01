@@ -5,6 +5,7 @@ import Divider from '../../components/Divider';
 import { Link } from 'react-router-dom';
 import useThemeContext from '../../hooks/useThemeContext';
 import { useQuery } from '@tanstack/react-query'
+import { getAllBlogs } from '../../utils/reactQueryFunctions';
 
 const Home = () => {
     const globalDarkTheme = useThemeContext()
@@ -12,13 +13,7 @@ const Home = () => {
 
     const { data } = useQuery({
         queryKey: ['homeArticles'],
-        queryFn: async () => {
-            const response = await fetch('https://blogapi-production-6036.up.railway.app/api/blogs', {
-                method: 'GET',
-                mode: 'cors'
-            });
-            return response.json();
-        }
+        queryFn: async () => await getAllBlogs()
     })
 
     return (

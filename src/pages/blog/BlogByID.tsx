@@ -6,6 +6,7 @@ import getFulLDate from "../../utils/getFullDate";
 import ThreeDotsSettings from "../../assets/images/three-dots-settings.svg"
 import { createPortal } from "react-dom";
 import BlogOptionsModal from "./BlogOptionsModal";
+import { getBlogById } from "../../utils/reactQueryFunctions";
 
 const BlogByID = () => {
 
@@ -14,12 +15,7 @@ const BlogByID = () => {
     const params = useParams();
     const { data, isLoading } = useQuery({
         queryKey: ['blogItem'],
-        queryFn: async () => {
-            const response = await fetch(`https://blogapi-production-6036.up.railway.app/api/blog/${params.id}`)
-            const data = response.json()
-            
-            return data
-        }
+        queryFn: async () => await getBlogById(params.id)
     })
 
     const handleToggleBlogSettings = () => {
@@ -60,7 +56,7 @@ const BlogByID = () => {
                         </div>
                         {data?.blog.blog_content && settingsOpenStatus && createPortal( <BlogOptionsModal/>
                             , mainAppContainer || document.body)}
-                        <span className="italic">Published on {getFulLDate(data?.blog.created_at_timestamp)}</span>
+                        <span className="italic">{(data?.blog.modified_time - data?.blog.created_time) > 1000 ? 'Edited on' : 'Published On'} {getFulLDate(Math.max(data?.blog.created_time, data?.blog.modified_time))}</span>
                         <div className="pt-5">
                             {data?.blog.blog_content}
                         </div>

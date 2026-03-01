@@ -3,6 +3,7 @@ import ArticleList from "../../components/ArticleList";
 import PageHeading from '../../components/PageHeading';
 import useThemeContext from '../../hooks/useThemeContext';
 import { Link } from 'react-router-dom';
+import { getAllBlogs } from '../../utils/reactQueryFunctions';
 
 const Blog = () => {
     const globalDarkTheme = useThemeContext()
@@ -10,13 +11,7 @@ const Blog = () => {
 
     const { data } = useQuery({
         queryKey: ['blogArticles'],
-        queryFn: async () => {
-            const response = await fetch('https://blogapi-production-6036.up.railway.app/api/blogs', {
-                method: 'GET',
-                mode: 'cors'
-            });
-            return response.json();
-        }
+        queryFn: async () => await getAllBlogs()
     })
 
     return (

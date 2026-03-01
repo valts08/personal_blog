@@ -1,7 +1,8 @@
 import PageHeading from "../../components/PageHeading";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
+import { getBlogById, editBlog } from "../../utils/reactQueryFunctions";
 
 const EditBlog = () => {
 
@@ -14,19 +15,15 @@ const EditBlog = () => {
         content: ''
     });
 
-    const { data: dataEditBlog, refetch: refetchEditBlog } = useQuery({
+    const { data: dataBlogById } = useQuery({
         queryKey: ['getBlogByID', params.id],
-        queryFn: async () => {
-            const response = await fetch(`https://blogapi-production-6036.up.railway.app/api/blog/${params.id}`, {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
-            
-            return response.json();
-        }
+        queryFn: async () => await getBlogById(params.id)
+    })
+
+    const { data: editBlogData, refetch: refetchEditBlog } = useQuery({
+        queryKey: ['editBlog', params.id],
+        queryFn: async () => await editBlog(formVariables, params.id),
+        enabled: false
     })
 
     const changeHandler = (e: any) => {
@@ -38,22 +35,23 @@ const EditBlog = () => {
     // after sending a put request, nevigate back to blogs page
     const handleEditSubmit = () => {
         // send put request
+        refetchEditBlog()
         // check for error message
-        // if (data.details || data.error) return
-        // setTimeout(() => {
-        //     navigate('/blog')
-        // }, 500)
+        if (editBlogData?.details || editBlogData?.error) return
+        setTimeout(() => {
+            navigate('/blog')
+        }, 500)
     }
 
     useEffect(() => {
-        if (dataEditBlog) {
+        if (dataBlogById) {
             setFormVariables({ 
-                title: dataEditBlog.blog.blog_title,
-                preview: dataEditBlog.blog.blog_preview,
-                content: dataEditBlog.blog.blog_content,
+                title: dataBlogById.blog.blog_title,
+                preview: dataBlogById.blog.blog_preview,
+                content: dataBlogById.blog.blog_content,
             })
         }
-    }, [dataEditBlog])
+    }, [dataBlogById])
 
     return (
         <>

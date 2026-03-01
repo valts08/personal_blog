@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { deleteBlog } from "../../utils/reactQueryFunctions";
 
 const BlogOptionsModal = () => {
 
@@ -9,13 +10,7 @@ const BlogOptionsModal = () => {
     const navigate = useNavigate();
     const { data, refetch } = useQuery({
         queryKey: ['blogDelete'],
-        queryFn: async () => {
-            const deletePromise = await fetch(`https://blogapi-production-6036.up.railway.app/api/blog/${params.id}`,{
-                method: 'DELETE'
-            })            
-            const response = deletePromise.json()
-            return response
-        },
+        queryFn: async () => await deleteBlog(params.id),
         enabled: false
     })
 

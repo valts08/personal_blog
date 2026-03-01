@@ -15,7 +15,7 @@ const ArticleItem = ({ article, type }: {article: ArticleItemType, type?: string
                 <h1 className={`${globalDarkTheme ? "text-white" : ""} font-semibold hover:text-gray-700 hover:underline ${focusStyles}`}>
                     <Link to={`/blog/${article._id}`}>{article.blog_title}</Link>
                 </h1>
-                <span className="text-gray-400 italic text-sm">{getFullDate(article.created_at_timestamp)}</span>
+                <span className="text-gray-400 italic text-sm">{getFullDate(article.created_time)}</span>
                 {type === 'blog' && (
                     <span className={`${globalDarkTheme ? "text-gray-400" : ""} block font-light`}>{article.blog_preview}</span>
                 )}

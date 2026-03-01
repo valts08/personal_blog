@@ -1,7 +1,8 @@
 import PageHeading from "../../components/PageHeading";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { createBlog } from "../../utils/reactQueryFunctions";
 
 const CreateBlog = () => {
 
@@ -15,23 +16,7 @@ const CreateBlog = () => {
 
     const { data, refetch, isPending, isError, error } = useQuery({
         queryKey: ['createBlog'],
-        queryFn: async () => {
-            const response = await fetch('https://blogapi-production-6036.up.railway.app/api/blog', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: new Date().getUTCMilliseconds(), // this is temporary, will eventually incorporate user_id generation via timestamp + additional operations
-                    blog_title: formVariables.title,
-                    blog_preview: formVariables.preview,
-                    blog_content: formVariables.content
-                })
-            })
-
-            return response.json();
-        },
+        queryFn: async () => await createBlog(formVariables),
         enabled: false,
         retry: 0
     })
@@ -42,13 +27,11 @@ const CreateBlog = () => {
         })
     }
 
-    useEffect(() => console.log(formVariables),[formVariables])
-
     const handleSubmit = () => {
         // after sending a post request, nevigate back to blogs page
         refetch()
         // check for error message
-        if (data && data.details || data.error) return
+        if (data && data?.details || data?.error) return
         setTimeout(() => {
             navigate('/blog')
         }, 500)
